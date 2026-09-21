@@ -1,0 +1,33 @@
+.projects {
+  padding: var(--space-20) 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+.projects-evolution-wrapper {
+  margin-bottom: var(--space-12);
+}
+
+.projects-cta {
+  text-align: center;
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: var(--space-16) 0;
+  }
+}

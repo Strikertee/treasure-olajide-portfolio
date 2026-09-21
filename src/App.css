@@ -1,0 +1,91 @@
+/* App-level styles and scroll animations */
+
+#main-content {
+  min-height: 100vh;
+}
+
+/* Scroll animation base */
+section {
+  opacity: 1;
+  transform: none;
+}
+
+section:not(.hero) {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  section:not(.hero) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Focus visible for skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  z-index: var(--z-toast);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Selection colors for specific elements */
+.project-card::selection,
+.recognition-card::selection,
+.skill-category::selection {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .hero-scroll-indicator,
+  .contact-form,
+  .footer-links,
+  .social-links,
+  .btn {
+    display: none !important;
+  }
+  
+  section {
+    opacity: 1 !important;
+    transform: none !important;
+    page-break-inside: avoid;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .project-card,
+  .recognition-card,
+  .skill-category,
+  .building-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+}

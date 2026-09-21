@@ -1,0 +1,96 @@
+.stats {
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(180deg, transparent, var(--color-bg-elevated), transparent);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+  justify-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  position: relative;
+  background: var(--color-bg-card);
+  background-image: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+}
+
+.stat-item:hover {
+  border-color: var(--color-border-accent);
+  box-shadow: var(--shadow-card-glow);
+  transform: translateY(-4px);
+}
+
+.stat-item::after {
+  display: none;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-text-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .stat-item {
+    padding: var(--space-5) var(--space-3);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    max-width: 300px;
+  }
+  
+  .stat-item {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-6);
+  }
+  
+  .stat-value {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-xs);
+  }
+}
