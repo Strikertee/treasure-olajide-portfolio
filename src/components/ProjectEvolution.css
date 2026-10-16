@@ -1,6 +1,6 @@
 .project-evolution {
   padding: var(--space-16) 0;
-  background: linear-gradient(180deg, transparent, var(--color-bg-elevated), transparent);
+  background: transparent;
   border-top: 1px solid var(--color-border);
 }
 
@@ -38,7 +38,7 @@
   transform: translateX(-50%);
   width: 2px;
   height: calc(100% - 120px);
-  background: linear-gradient(180deg, var(--color-accent), transparent);
+  background: var(--color-accent);
   opacity: 0.3;
 }
 
@@ -116,7 +116,7 @@
 .connector-line {
   width: 2px;
   height: 40px;
-  background: linear-gradient(180deg, var(--color-accent), transparent);
+  background: var(--color-accent);
 }
 
 .connector-arrow {
@@ -147,7 +147,7 @@
   .connector-line {
     width: 60px;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-accent), transparent);
+    background: var(--color-accent);
   }
   
   .evolution-stage {

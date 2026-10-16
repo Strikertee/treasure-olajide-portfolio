@@ -5,7 +5,6 @@ import './Devions.css';
 export default function DevionsSection() {
   return (
     <section id="devions" className="devions" aria-labelledby="devions-title">
-      <div className="devions-bg" aria-hidden="true"></div>
       <div className="container">
         <header className="devions-header">
           <Tag variant="devions" size="sm" className="section-tag">

@@ -4,17 +4,14 @@
   min-height: 100vh;
 }
 
-/* Scroll animation base */
+/* Scroll animation base — reveal is handled by Framer Motion
+   (src/components/motion/Reveal.tsx with whileInView).
+   Sections are visible by default; legacy .animate-in kept for
+   any remaining CSS-based sections during gradual migration. */
+
 section {
   opacity: 1;
   transform: none;
-}
-
-section:not(.hero) {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 section.animate-in {

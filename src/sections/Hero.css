@@ -8,23 +8,6 @@
   overflow: hidden;
 }
 
-.hero-grid-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(0, 163, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 163, 255, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: gridMove 20s linear infinite;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-grid-pattern {
-    animation: none;
-  }
-}
-
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -168,71 +151,6 @@
   overflow: hidden;
 }
 
-/* Visual Background */
-.visual-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: var(--radius-2xl);
-}
-
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.5;
-  animation: orbFloat 25s ease-in-out infinite;
-}
-
-.orb-1 {
-  width: 350px;
-  height: 350px;
-  top: -80px;
-  right: -80px;
-  background: var(--gradient-primary);
-  animation-delay: 0s;
-  animation: orbFloat 30s ease-in-out infinite, glowPulse 4s ease-in-out infinite;
-}
-
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  bottom: 10%;
-  left: -50px;
-  background: var(--gradient-cyan-orange);
-  animation-delay: -8s;
-  animation: orbFloat 28s ease-in-out infinite -8s, glowPulseCyan 5s ease-in-out infinite -2s;
-}
-
-.orb-3 {
-  width: 250px;
-  height: 250px;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gradient-secondary-accent);
-  animation-delay: -16s;
-  animation: orbFloat 32s ease-in-out infinite -16s, glowPulseOrange 3.5s ease-in-out infinite -1s;
-}
-
-.orb-4 {
-  width: 200px;
-  height: 200px;
-  top: 70%;
-  right: 10%;
-  background: var(--gradient-orange-cyan);
-  animation: orbFloat 26s ease-in-out infinite -5s, glowPulse 6s ease-in-out infinite -3s;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  20% { transform: translate(40px, -30px) scale(1.15); }
-  40% { transform: translate(-30px, 40px) scale(0.9); }
-  60% { transform: translate(-40px, -20px) scale(1.1); }
-  80% { transform: translate(20px, 30px) scale(0.95); }
-}
-
 @keyframes glowPulse {
   0%, 100% { opacity: 0.4; filter: blur(100px); }
   50% { opacity: 0.6; filter: blur(120px); }
@@ -246,27 +164,6 @@
 @keyframes glowPulseOrange {
   0%, 100% { opacity: 0.3; filter: blur(100px); }
   50% { opacity: 0.5; filter: blur(130px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gradient-orb {
-    animation: none;
-    opacity: 0.3;
-  }
-}
-
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(0, 163, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 163, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px, 60px 60px, 120px 120px, 120px 120px;
-  animation: gridMove 40s linear infinite;
-  pointer-events: none;
-  border-radius: var(--radius-2xl);
 }
 
 /* Image Carousel */
@@ -341,13 +238,7 @@
 .overlay-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(3, 7, 18, 0.3) 0%,
-    transparent 40%,
-    transparent 60%,
-    rgba(3, 7, 18, 0.6) 100%
-  );
+  background: rgba(4, 7, 13, 0.5);
 }
 
 .slide-caption {
@@ -381,7 +272,7 @@
   font-size: var(--font-size-sm);
   color: var(--color-accent-light);
   opacity: 0.8;
-  background: rgba(0, 163, 255, 0.15);
+  background: rgba(255, 102, 0, 0.15);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border-accent);
@@ -650,7 +541,7 @@
 }
 
 .float-3::before {
-  background: var(--gradient-devions);
+  background: #FF6600;
 }
 
 .float-4 {

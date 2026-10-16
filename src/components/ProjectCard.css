@@ -43,7 +43,7 @@
 .card-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(3, 7, 18, 0.8));
+  background: rgba(4, 7, 13, 0.45);
   transition: opacity var(--transition-base);
   pointer-events: none;
 }
@@ -186,7 +186,7 @@
 .modal-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(3, 7, 18, 0.9));
+  background: rgba(4, 7, 13, 0.5);
 }
 
 .modal-header {

@@ -1,4 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ElementType } from 'react';
+import { Card as UICard } from './ui/card';
+import { cn } from '@/lib/utils';
 
 type CardVariant = 'default' | 'interactive' | 'elevated' | 'flat';
 type CardPadding = 'none' | 'sm' | 'md' | 'lg';
@@ -12,41 +14,39 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   as?: ElementType;
 }
 
+const paddingClasses: Record<CardPadding, string> = {
+  none: 'p-0',
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
+};
+
+// Legacy wrapper — delegates to shadcn/ui Card.
 const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     {
       children,
       className = '',
       variant = 'default',
-      _interactive = false,
+      interactive = false,
       padding = 'md',
-      as: Component = 'div',
+      as: _as,
       ...props
     },
     ref
   ) => {
-    const variantClasses: Record<CardVariant, string> = {
-      default: 'card',
-      interactive: 'card card-interactive',
-      elevated: 'card',
-      flat: ''
-    };
-
-    const paddingClasses: Record<CardPadding, string> = {
-      none: '',
-      sm: 'p-4',
-      md: 'p-6',
-      lg: 'p-8'
-    };
+    const resolvedVariant =
+      variant === 'interactive' || interactive ? 'interactive' : variant;
 
     return (
-      <Component
+      <UICard
         ref={ref}
-        className={`${variantClasses[variant] || variantClasses.default} ${paddingClasses[padding]} ${className}`}
+        variant={resolvedVariant}
+        className={cn(paddingClasses[padding], className)}
         {...props}
       >
         {children}
-      </Component>
+      </UICard>
     );
   }
 );

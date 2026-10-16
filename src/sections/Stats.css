@@ -2,7 +2,7 @@
   padding: var(--space-8) 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  background: linear-gradient(180deg, transparent, var(--color-bg-elevated), transparent);
+  background: transparent;
 }
 
 .stats-grid {
@@ -46,10 +46,6 @@
   font-weight: var(--font-weight-bold);
   line-height: 1;
   color: var(--color-text-primary);
-  background: linear-gradient(135deg, var(--color-text-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .stat-label {

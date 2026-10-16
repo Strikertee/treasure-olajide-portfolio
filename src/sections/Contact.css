@@ -1,6 +1,6 @@
 .contact {
   padding: var(--space-20) 0;
-  background: linear-gradient(180deg, transparent, var(--color-bg-elevated), transparent);
+  background: transparent;
 }
 
 .contact-content {

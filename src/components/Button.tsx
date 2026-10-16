@@ -1,4 +1,6 @@
 import { forwardRef, type ButtonHTMLAttributes, type ElementType } from 'react';
+import { Button as UIButton } from './ui/button';
+import { cn } from '@/lib/utils';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -16,60 +18,62 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
 }
 
+const variantMap: Record<ButtonVariant, 'primary' | 'secondary' | 'ghost' | 'link'> = {
+  primary: 'primary',
+  secondary: 'secondary',
+  ghost: 'ghost',
+  link: 'link',
+};
+
+const sizeMap: Record<ButtonSize, 'sm' | 'md' | 'lg'> = {
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+};
+
+// Legacy wrapper — delegates to shadcn/ui Button so existing
+// `variant` / `size` / `loading` / `leftIcon` API keeps working.
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
       variant = 'primary',
       size = 'md',
-      className = '',
+      className,
       disabled = false,
       loading = false,
       leftIcon,
       rightIcon,
       fullWidth = false,
-      as: Component = 'button',
+      as,
       href,
       ...props
     },
     ref
   ) => {
-    const baseClasses = 'btn';
-    const variantClasses: Record<ButtonVariant, string> = {
-      primary: 'btn-primary',
-      secondary: 'btn-secondary',
-      ghost: 'btn-ghost',
-      link: 'btn-link'
-    };
-    const sizeClasses: Record<ButtonSize, string> = {
-      sm: 'px-3 py-2 text-xs',
-      md: 'px-6 py-3 text-sm',
-      lg: 'px-8 py-4 text-base'
-    };
-
-    const widthClass = fullWidth ? 'w-full' : '';
-
-    const isLink = Component !== 'button' || href;
+    if (as && as !== 'button' && href) {
+      const Component = as as ElementType;
+      return (
+        <Component ref={ref} href={href} className={className} {...props}>
+          {children}
+        </Component>
+      );
+    }
 
     return (
-      <Component
+      <UIButton
         ref={ref}
-        className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`}
-        disabled={disabled || loading}
-        aria-busy={loading}
-        href={isLink ? href : undefined}
+        variant={variantMap[variant]}
+        size={sizeMap[size]}
+        loading={loading}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        disabled={disabled}
+        className={cn(fullWidth && 'w-full', className)}
         {...props}
       >
-        {loading && (
-          <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-        )}
-        {!loading && leftIcon && <span aria-hidden="true">{leftIcon}</span>}
-        <span>{children}</span>
-        {!loading && rightIcon && <span aria-hidden="true">{rightIcon}</span>}
-      </Component>
+        {children}
+      </UIButton>
     );
   }
 );

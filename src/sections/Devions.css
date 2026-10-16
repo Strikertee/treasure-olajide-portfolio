@@ -4,13 +4,6 @@
   overflow: hidden;
 }
 
-.devions-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.08), transparent 70%);
-  pointer-events: none;
-}
-
 .devions-header {
   text-align: center;
   max-width: 720px;
@@ -123,7 +116,7 @@
 .branch-line {
   width: 2px;
   height: 60px;
-  background: linear-gradient(180deg, var(--color-devions), transparent);
+  background: var(--color-devions);
   opacity: 0.4;
   margin-bottom: var(--space-4);
 }

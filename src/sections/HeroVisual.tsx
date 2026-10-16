@@ -83,14 +83,6 @@ export default function HeroVisual() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <div className="visual-background" aria-hidden="true">
-        <div className="gradient-orb orb-1"></div>
-        <div className="gradient-orb orb-2"></div>
-        <div className="gradient-orb orb-3"></div>
-        <div className="gradient-orb orb-4"></div>
-        <div className="grid-overlay"></div>
-      </div>
-
       <div className="image-carousel">
         {images.map((image, index) => {
           const isActive = index === currentIndex;

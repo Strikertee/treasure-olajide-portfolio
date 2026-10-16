@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './sections/Hero';
@@ -15,30 +14,9 @@ import './styles/globals.css';
 import './App.css';
 
 function App() {
-  useEffect(() => {
-    // Initialize scroll animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -10% 0px',
-      threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-    
-    // Observe sections for scroll animations
-    document.querySelectorAll('section').forEach((section) => {
-      observer.observe(section);
-    });
-    
-    return () => observer.disconnect();
-  }, []);
-  
+  // Scroll reveal is now handled per-component by Framer Motion
+  // (see src/components/motion/Reveal.tsx with whileInView).
+  // No global IntersectionObserver needed.
   return (
     <>
       <Navbar />
